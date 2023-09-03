@@ -23,10 +23,9 @@ function getComputerChoice() {
     }
 
     // Print computerChoice to console
-    console.log("computer selection is " + computerChoice);
+    console.log("Computer selection is " + computerChoice);
 }
 
-getComputerChoice();
 
 // Get player's choice of either Rock, Paper, or Scissors 
 
@@ -40,10 +39,13 @@ let playerInput = prompt("Please enter your choice of Rock, Paper, or Scissors:"
 //console.log(playerInput);
 // Set playerSelection equal to the player's input with one capital letter and the rest of the letters lowercase
 playerSelection = playerInput.charAt(0).toUpperCase() + playerInput.slice(1).toLowerCase();
-console.log("player selection is " + playerSelection);
+console.log("Player selection is " + playerSelection);
 }
 
-getPlayerChoice();
+// Create playerScore variable 
+let playerScore = 0;
+// Create computerScore variable
+let computerScore = 0;
 
 // Create determineWinner function with two parameters (playerSelection and computerSelection) to determine winner of round
 function determineWinner(playerSelection, computerSelection) {
@@ -59,31 +61,38 @@ if (playerSelection === computerSelection) {
 // If computerSelection = "Rock" and playerSelection = "Paper" then return "You Win! Paper beats Rock"
 } else if (computerSelection === "Rock") {
     if (playerSelection === "Paper") {
+        ++playerScore;
         return playerWon + " Paper beats Rock";
 // If computerSelection = "Rock" and playerSelection = "Scissors" then return "You Lose! Rock beats Scissors"
     } else {
+        ++computerScore;
         return playerLost + " Rock beats Scissors"
     }
 // If computerSelection = "Paper" and playerSelection = "Scissors" then return "You Win! Scissors beats Paper"
 } else if (computerSelection === "Paper") {
     if (playerSelection === "Scissors") {
+        ++playerScore;
         return playerWon + " Scissors beats Rock";
 // If computerSelection = "Paper" and playerSelection = "Rock" then return "You Lose! Paper beats Rock"
     } else {
+        ++computerScore;
         return playerLost + " Paper beats Rock"
     }
 // If computerSelection = "Scissors" and playerSelection = "Paper" then return "You Lose! Scissors beats Paper"
 } else if (computerSelection === "Scissors") {
     if (playerSelection === "Paper") {
+        ++computerScore;
         return playerLost + " Scissors beats Paper";
+
 // If computerSelection = "Scissors" and playerSelection = "Rock" then return "You Win! Rock beats Scissors"
     } else {
+        ++playerScore;
         return playerWon + " Rock beats Scissors"
     }
 // Return error if conditions are not met
 } else {
     return "ERROR"
-}
+};
 
 }
 
@@ -95,13 +104,41 @@ if (playerSelection === computerSelection) {
 // Create function called game
 function game() {
 // Call the determineWinner function
+getComputerChoice();
+getPlayerChoice();
 console.log(determineWinner(playerSelection, computerChoice));
-// If player wins, add 1 point to their score and console log it
-
-// If computer wins, add 1 point to their score and console log it
-
-}
+console.log("The computer score is " + computerScore);
+console.log("The player score is " + playerScore);
+getComputerChoice();
+getPlayerChoice();
+console.log(determineWinner(playerSelection, computerChoice));
+console.log("The computer score is " + computerScore);
+console.log("The player score is " + playerScore);
+getComputerChoice();
+getPlayerChoice();
+console.log(determineWinner(playerSelection, computerChoice));
+console.log("The computer score is " + computerScore);
+console.log("The player score is " + playerScore);
+getComputerChoice();
+getPlayerChoice();
+console.log(determineWinner(playerSelection, computerChoice));
+console.log("The computer score is " + computerScore);
+console.log("The player score is " + playerScore);
+getComputerChoice();
+getPlayerChoice();
+console.log(determineWinner(playerSelection, computerChoice));
+console.log("The computer score is " + computerScore);
+console.log("The player score is " + playerScore);
 // Console log the winner of the game
+
+if (computerScore > playerScore) {
+    console.log("You lost the game!");
+} else if (computerScore < playerScore) {
+    console.log("You won the game!");
+} else {
+    console.log("It's a tie!");
+}
+}
 
 // Call game function
 game();
