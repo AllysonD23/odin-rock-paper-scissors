@@ -141,4 +141,4 @@ if (computerScore > playerScore) {
 }
 
 // Call game function
-game();
+game();g
